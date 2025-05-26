@@ -1,0 +1,284 @@
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ScatterChart, Scatter, ErrorBar } from 'recharts';
+
+const ANOVAAnalysisReport = () => {
+  // ANOVA分析结果数据
+  const anovaResults = [
+    {
+      variable: "学习行为与课堂适应",
+      englishName: "Learning Behaviors and Classroom Adaptation",
+      accompaniedGroup: { n: 29, mean: 6.693, sd: 1.465 },
+      controlGroup: { n: 21, mean: 6.257, sd: 1.710 },
+      fValue: 0.9368,
+      dfBetween: 1,
+      dfWithin: 48,
+      significant: false,
+      effectSize: null,
+      criticalValue: 4.08
+    },
+    {
+      variable: "社会互动",
+      englishName: "Social Interaction", 
+      accompaniedGroup: { n: 29, mean: 6.044, sd: 1.758 },
+      controlGroup: { n: 21, mean: 4.574, sd: 1.105 },
+      fValue: 11.3724,
+      dfBetween: 1,
+      dfWithin: 48,
+      significant: true,
+      effectSize: 0.438,
+      criticalValue: 4.08
+    },
+    {
+      variable: "情绪调节",
+      englishName: "Emotion Regulation",
+      accompaniedGroup: { n: 29, mean: 6.972, sd: 1.628 },
+      controlGroup: { n: 21, mean: 4.682, sd: 1.937 },
+      fValue: 20.5507,
+      dfBetween: 1,
+      dfWithin: 48,
+      significant: true,
+      effectSize: 0.548,
+      criticalValue: 4.08
+    },
+    {
+      variable: "重复行为与兴趣",
+      englishName: "Repetitive Behaviors and Interests",
+      accompaniedGroup: { n: 29, mean: 4.819, sd: 2.419 },
+      controlGroup: { n: 21, mean: 5.675, sd: 1.914 },
+      fValue: 1.8050,
+      dfBetween: 1,
+      dfWithin: 48,
+      significant: false,
+      effectSize: null,
+      criticalValue: 4.08
+    },
+    {
+      variable: "整体日常表现",
+      englishName: "Overall Daily Performance",
+      accompaniedGroup: { n: 29, mean: 6.210, sd: 1.532 },
+      controlGroup: { n: 21, mean: 5.288, sd: 1.355 },
+      fValue: 4.8456,
+      dfBetween: 1,
+      dfWithin: 48,
+      significant: true,
+      effectSize: 0.303,
+      criticalValue: 4.08
+    }
+  ];
+
+  // 准备图表数据
+  const chartData = anovaResults.map(result => ({
+    variable: result.variable,
+    陪伴组: result.accompaniedGroup.mean,
+    控制组: result.controlGroup.mean,
+    陪伴组误差: result.accompaniedGroup.sd,
+    控制组误差: result.controlGroup.sd,
+    significant: result.significant
+  }));
+
+  const fValueData = anovaResults.map(result => ({
+    variable: result.variable,
+    F值: result.fValue,
+    临界值: result.criticalValue,
+    significant: result.significant
+  }));
+
+  return (
+    <div className="max-w-6xl mx-auto p-6 bg-white">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">单因素方差分析 (One-Way ANOVA) 报告</h1>
+        <p className="text-lg text-gray-600">陪伴组 vs 控制组的比较分析</p>
+      </div>
+
+      {/* 研究概况 */}
+      <div className="bg-blue-50 p-6 rounded-lg mb-8">
+        <h2 className="text-xl font-semibold text-blue-800 mb-4">研究概况</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <p className="text-blue-700"><strong>陪伴组样本量:</strong> 29</p>
+            <p className="text-blue-700"><strong>控制组样本量:</strong> 21</p>
+          </div>
+          <div>
+            <p className="text-blue-700"><strong>总样本量:</strong> 50</p>
+            <p className="text-blue-700"><strong>显著性水平:</strong> α = 0.05</p>
+          </div>
+        </div>
+      </div>
+
+      {/* 组间均值比较图 */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">组间均值比较</h2>
+        <div className="bg-white p-4 border rounded-lg">
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis 
+                dataKey="variable" 
+                angle={-45}
+                textAnchor="end"
+                height={100}
+                fontSize={12}
+              />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="陪伴组" fill="#3B82F6" name="陪伴组均值" />
+              <Bar dataKey="控制组" fill="#EF4444" name="控制组均值" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* F统计量比较图 */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">F统计量与临界值比较</h2>
+        <div className="bg-white p-4 border rounded-lg">
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart data={fValueData} margin={{ top: 20, right: 30, left: 20, bottom: 60 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis 
+                dataKey="variable" 
+                angle={-45}
+                textAnchor="end"
+                height={100}
+                fontSize={12}
+              />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="F值" fill="#10B981" name="F统计量" />
+              <Bar dataKey="临界值" fill="#F59E0B" name="临界值 (α=0.05)" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+
+      {/* 详细分析结果表格 */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">详细分析结果</h2>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white border border-gray-300">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="py-3 px-4 border-b text-left font-semibold">变量</th>
+                <th className="py-3 px-4 border-b text-center font-semibold">陪伴组<br/>(n=29)</th>
+                <th className="py-3 px-4 border-b text-center font-semibold">控制组<br/>(n=21)</th>
+                <th className="py-3 px-4 border-b text-center font-semibold">F统计量</th>
+                <th className="py-3 px-4 border-b text-center font-semibold">自由度</th>
+                <th className="py-3 px-4 border-b text-center font-semibold">显著性</th>
+                <th className="py-3 px-4 border-b text-center font-semibold">效应量</th>
+              </tr>
+            </thead>
+            <tbody>
+              {anovaResults.map((result, index) => (
+                <tr key={index} className={result.significant ? "bg-green-50" : "bg-gray-50"}>
+                  <td className="py-3 px-4 border-b">
+                    <div>
+                      <div className="font-medium text-gray-900">{result.variable}</div>
+                      <div className="text-sm text-gray-500">{result.englishName}</div>
+                    </div>
+                  </td>
+                  <td className="py-3 px-4 border-b text-center">
+                    <div>M = {result.accompaniedGroup.mean.toFixed(3)}</div>
+                    <div className="text-sm text-gray-600">SD = {result.accompaniedGroup.sd.toFixed(3)}</div>
+                  </td>
+                  <td className="py-3 px-4 border-b text-center">
+                    <div>M = {result.controlGroup.mean.toFixed(3)}</div>
+                    <div className="text-sm text-gray-600">SD = {result.controlGroup.sd.toFixed(3)}</div>
+                  </td>
+                  <td className="py-3 px-4 border-b text-center font-mono">
+                    {result.fValue.toFixed(4)}
+                  </td>
+                  <td className="py-3 px-4 border-b text-center">
+                    ({result.dfBetween}, {result.dfWithin})
+                  </td>
+                  <td className="py-3 px-4 border-b text-center">
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                      result.significant 
+                        ? 'bg-green-100 text-green-800' 
+                        : 'bg-gray-100 text-gray-800'
+                    }`}>
+                      {result.significant ? '显著 *' : '不显著'}
+                    </span>
+                  </td>
+                  <td className="py-3 px-4 border-b text-center">
+                    {result.effectSize ? `η = ${result.effectSize.toFixed(3)}` : '-'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* 结果解释 */}
+      <div className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">结果解释</h2>
+        <div className="space-y-4">
+          {anovaResults.filter(r => r.significant).map((result, index) => (
+            <div key={index} className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+              <h3 className="font-semibold text-green-800 mb-2">{result.variable} - 显著差异</h3>
+              <p className="text-green-700">
+                陪伴组在{result.variable}上的表现显著{result.accompaniedGroup.mean > result.controlGroup.mean ? '优于' : '低于'}控制组
+                (F({result.dfBetween}, {result.dfWithin}) = {result.fValue.toFixed(4)}, p &lt; 0.05)。
+                {result.effectSize && (
+                  <span> 效应量为{result.effectSize.toFixed(3)}，属于{
+                    result.effectSize > 0.5 ? '大效应' : 
+                    result.effectSize > 0.3 ? '中等效应' : '小效应'
+                  }。</span>
+                )}
+              </p>
+            </div>
+          ))}
+          
+          {anovaResults.filter(r => !r.significant).map((result, index) => (
+            <div key={index} className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
+              <h3 className="font-semibold text-gray-800 mb-2">{result.variable} - 无显著差异</h3>
+              <p className="text-gray-700">
+                两组在{result.variable}上的差异不显著
+                (F({result.dfBetween}, {result.dfWithin}) = {result.fValue.toFixed(4)}, p &gt; 0.05)。
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 统计学总结 */}
+      <div className="bg-gray-50 p-6 rounded-lg">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">统计学总结</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h3 className="font-semibold text-gray-700 mb-2">显著性结果</h3>
+            <ul className="space-y-2">
+              <li className="flex items-center">
+                <span className="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                <span>显著差异: {anovaResults.filter(r => r.significant).length} 个变量</span>
+              </li>
+              <li className="flex items-center">
+                <span className="w-3 h-3 bg-gray-400 rounded-full mr-2"></span>
+                <span>无显著差异: {anovaResults.filter(r => !r.significant).length} 个变量</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-semibold text-gray-700 mb-2">效应量解释</h3>
+            <ul className="space-y-1 text-sm text-gray-600">
+              <li>• η &lt; 0.3: 小效应</li>
+              <li>• 0.3 ≤ η &lt; 0.5: 中等效应</li>
+              <li>• η ≥ 0.5: 大效应</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div className="mt-4 p-4 bg-blue-100 rounded">
+          <p className="text-blue-800 text-sm">
+            <strong>注:</strong> 本分析采用单因素方差分析(One-Way ANOVA)，比较陪伴组与控制组在五个维度上的差异。
+            显著性水平设定为α = 0.05，F统计量大于临界值4.08时判定为显著差异。
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ANOVAAnalysisReport;
