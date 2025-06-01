@@ -2,18 +2,17 @@
 
 ## 研究概况 / Study Overview
 
-- **研究设计 / Study Design**: 配对样本t检验 + 独立样本t检验 + 单因素方差分析 / Paired-samples t-test + Independent-samples t-test + One-way ANOVA
-- **对比时间 / Comparison Time**: 干预第1天（基线）vs 干预第5天（干预后） / Day 1 (baseline) vs Day 5 (post-intervention)
-- **研究对象 / Study Subjects**: 实验组 (Accompanied Group) 和对照组 (Control Group) / Experimental group and control group
-- **总样本量 / Total Sample Size**: 50条记录 / 50 records
-- **参与者总数 / Total Participants**: 11人 / 11 participants
-- **测量时间点 / Measurement Time Points**: 第1天、第2天、第3天、第4天、第5天 / Day 1, 2, 3, 4, 5
+- **研究设计**: 配对样本t检验 + 独立样本t检验 + 单因素方差分析 / Paired-samples t-test + Independent-samples t-test + One-way ANOVA
+- **对比时间**: 干预第1天（干预前）vs 干预第5天（干预后） / Day 1 (Pre-intervention) vs Day 5 (Post-intervention)
+- **研究对象**: 实验组 (Accompanied Group) 和对照组 (Control Group / Non-accompanied Group)
+- **总样本量 (n)**: 50条记录 / 50 records
+- **参与者总数**: 11人 / 11 participants
 
 ---
 
-## 1. 实验组干预前后配对样本t检验 / Paired-samples t-test for Pre-post Intervention (Experimental Group)
+## 1. 实验组干预前后配对样本t检验 <br> Paired-samples t-test for Pre-post Intervention (Accompanied Group)
 
-### 1.1 统计分析结果汇总 / Summary of Statistical Analysis Results
+### 1.1 统计分析结果汇总<br>Summary of Statistical Analysis Results
 
 | 测量领域<br>Measurement Domain | 样本量<br>N | 干预前均值±标准差<br>Pre M±SD | 干预后均值±标准差<br>Post M±SD | 平均改善量<br>Mean Change | t统计量<br>t-statistic | 95%置信区间<br>95% CI | Cohen's d | p值<br>p-value | 显著性<br>Significance |
 |---------|--------|-------------------|-------------------|------------|---------|-------------|-----------|-----|--------|
@@ -23,7 +22,7 @@
 | 情绪调节<br>Emotion Regulation | 6 | 5.628±2.135 | 7.511±1.270 | +1.883 | 3.067 | [0.305, 3.462] | 1.072 | <0.05 | 显著*<br>Significant* |
 | 重复行为和兴趣<br>Repetitive Behaviors and Interests | 6 | 4.125±1.876 | 5.833±2.035 | +1.708 | 2.354 | [-0.158, 3.574] | 0.873 | >0.05 | 不显著<br>Non-significant |
 
-### 1.2 个别参与者详细分析 / Individual Participant Analysis
+### 1.2 个别参与者详细分析 <br> Individual Participant Analysis
 
 #### 参与者1 / Participant 1
 
@@ -87,9 +86,9 @@
 
 ---
 
-## 2. 组间比较：独立样本t检验 / Between-group Comparison: Independent-samples t-test
+## 2. 组间比较：独立样本t检验 <br> Between-group Comparison: Independent-samples t-test
 
-### 2.1 描述性统计数据 / Descriptive Statistics
+### 2.1 描述性统计数据 <br> Descriptive Statistics
 
 | 测量领域<br>Measurement Domain | 组别<br>Group | 样本量<br>N | 平均值<br>Mean | 标准差<br>SD | 最小值<br>Min | 最大值<br>Max | 中位数<br>Median |
 |---------|------|--------|--------|--------|--------|--------|--------|
@@ -104,7 +103,7 @@
 | 整体日常表现<br>Overall Daily Performance | 实验组<br>Experimental | 29 | 6.210 | 1.532 | 3.071 | 8.655 | 6.214 |
 |  | 对照组<br>Control | 21 | 5.288 | 1.355 | 2.960 | 7.840 | 5.077 |
 
-### 2.2 独立样本t检验结果 / Independent-samples t-test Results
+### 2.2 独立样本t检验结果 <br> Independent-samples t-test Results
 
 | 测量领域<br>Measurement Domain | 实验组均值<br>Exp. Mean | 对照组均值<br>Ctrl. Mean | 均值差异<br>Mean Diff. | t统计量(df=48)<br>t-statistic | p值<br>p-value | Cohen's d | 效应大小<br>Effect Size | 显著性<br>Significance |
 |---------|------------|------------|----------|----------------|-----|-----------|----------|--------|
@@ -116,9 +115,9 @@
 
 ---
 
-## 3. 单因素方差分析 (ANOVA) / One-way ANOVA Analysis
+## 3. 单因素方差分析 (ANOVA) <br> One-way ANOVA Analysis
 
-### 3.1 ANOVA统计结果 / ANOVA Statistical Results
+### 3.1 ANOVA统计结果 <br> ANOVA Statistical Results
 
 | 测量领域<br>Measurement Domain | F统计量<br>F-statistic | 自由度<br>df | p值<br>p-value | 效应量η²<br>Effect Size η² | 显著性<br>Significance |
 |---------|------------|----------|-----|-----------|--------|
@@ -128,7 +127,7 @@
 | 重复行为与兴趣<br>Repetitive Behaviors and Interests | 1.8050 | (1, 48) | >0.05 | - | 不显著<br>Non-significant |
 | 整体日常表现<br>Overall Daily Performance | 4.8456 | (1, 48) | <0.05 | η = 0.303<br>(中效应<br>Medium effect) | 显著*<br>Significant* |
 
-### 3.2 ANOVA显著差异分析 / ANOVA Significant Differences Analysis
+### 3.2 ANOVA显著差异分析 <br> ANOVA Significant Differences Analysis
 
 #### 显著差异发现 / Significant Findings
 
@@ -174,9 +173,9 @@
 
 ---
 
-## 4. 主要发现与结论 / Main Findings and Conclusions
+## 4. 主要发现与结论 <br> Main Findings and Conclusions
 
-### 4.1 配对样本t检验结果（实验组干预前后）/ Paired-samples t-test Results (Pre-post Intervention)
+### 4.1 配对样本t检验结果（实验组干预前后）<br> Paired-samples t-test Results (Pre-post Intervention)
 
 #### 统计显著改善的领域 / Statistically Significant Improvements
 1. **社交互动 / Social Interaction** - 改善+2.287分，p<0.05，Cohen's d=1.386（大效应）/ Improvement +2.287 points, p<0.05, Cohen's d=1.386 (large effect)
@@ -187,7 +186,7 @@
 #### 无显著改善 / Non-significant Improvements
 - **重复行为和兴趣 / Repetitive Behaviors and Interests** - 改善+1.708分，p>0.05，Cohen's d=0.873（大效应）/ Improvement +1.708 points, p>0.05, Cohen's d=0.873 (large effect)
 
-### 4.2 独立样本t检验结果（组间比较）/ Independent-samples t-test Results (Between-group Comparison)
+### 4.2 独立样本t检验结果（组间比较）<br> Independent-samples t-test Results (Between-group Comparison)
 
 #### 显著性发现 / Significant Findings
 1. **情绪调节能力 / Emotion Regulation** - 实验组显著优于对照组（p<0.05，大效应）/ Experimental group significantly outperformed control group (p<0.05, large effect)
@@ -198,7 +197,7 @@
 1. **学习行为与课堂适应 / Learning Behaviors and Classroom Adaptation** - 两组差异不显著（p>0.05）/ No significant difference between groups (p>0.05)
 2. **重复行为与兴趣 / Repetitive Behaviors and Interests** - 两组差异不显著（p>0.05）/ No significant difference between groups (p>0.05)
 
-### 4.3 单因素方差分析结果 / One-way ANOVA Results
+### 4.3 单因素方差分析结果 <br> One-way ANOVA Results
 
 #### 显著性发现 / Significant Findings
 1. **情绪调节 / Emotion Regulation** - F(1,48)=20.5507, p<0.05, η=0.548（大效应）/ Large effect
@@ -209,7 +208,7 @@
 1. **学习行为与课堂适应 / Learning Behaviors and Classroom Adaptation** - F(1,48)=0.9368, p>0.05
 2. **重复行为与兴趣 / Repetitive Behaviors and Interests** - F(1,48)=1.8050, p>0.05
 
-### 4.4 效应量评估 / Effect Size Assessment
+### 4.4 效应量评估 <br> Effect Size Assessment
 
 | 效应大小分类<br>Effect Size Category | Cohen's d范围<br>Cohen's d Range | 涉及领域<br>Domains |
 |-------------|---------------|----------|
@@ -245,3 +244,4 @@
 **注释说明 / Notes**：
 - *p < 0.05（统计显著 / Statistically significant）
 - 本分析采用单因素方差分析(One-Way ANOVA)，比较两个独立组别的均值差异，显著性水平设定为α = 0.05，当F统计量大于临界值(4.08)时判定为显著差异，效应量用η²衡量差异的实际意义大小 / This analysis used One-Way ANOVA to compare mean differences between two independent groups, with significance level set at α = 0.05. When F-statistic exceeds critical value (4.08), it was determined as significant difference, with effect size measured by η² to assess practical significance of differences.
+- Generated by Arthropic Claude 4 Sonnet
