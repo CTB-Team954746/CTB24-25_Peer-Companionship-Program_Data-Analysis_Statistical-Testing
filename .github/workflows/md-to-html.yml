@@ -3,38 +3,47 @@ name: Convert Markdown to HTML and Create PR
 on:
   push:
     branches:
-      - main
+      - main # This workflow triggers on pushes to the main branch
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # The job will run on an Ubuntu virtual machine
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4 # Uses the v4 version of the checkout action for better compatibility and features.
+      # This step checks out your repository's code into the runner.
 
     - name: Set up Pandoc
-      run: sudo apt-get install -y pandoc
+      run: |
+        sudo apt-get update # Updates the package list
+        sudo apt-get install -y pandoc # Installs Pandoc, a universal document converter
 
     - name: Convert Markdown to HTML
       run: |
+        # Loop through all Markdown files in the repository
         for file in *.md; do
+          # Use Pandoc to convert each .md file to a .html file with the same base name
           pandoc "$file" -o "${file%.md}.html"
         done
-
-    - name: Commit converted HTML
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "github-actions@users.noreply.github.com"
-        git checkout -b html-converted
-        git add *.html
-        git commit -m "Auto convert .md to .html"
-        git push origin html-converted
+        # The generated HTML files will be in the same directory as the Markdown files.
 
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v6
+      uses: peter-evans/create-pull-request@v6 # Uses the peter-evans/create-pull-request action to automate PR creation
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        title: "Converted Markdown to HTML"
-        body: "This PR contains the auto-generated HTML files from Markdown."
-        branch: html-converted
+        token: ${{ secrets.GITHUB_TOKEN }} # Uses the default GITHUB_TOKEN for authentication.
+                                          # This token has permissions scoped to the repository where the workflow is running.
+        title: "Converted Markdown to HTML" # The title for the new pull request
+        body: "This PR contains the auto-generated HTML files from Markdown." # The body/description of the pull request
+        branch: html-converted # The name of the new branch that will be created and pushed.
+                               # This branch will contain the HTML changes.
+        base: main # Explicitly sets the base branch for the pull request to 'main'.
+                   # The PR will propose changes from 'html-converted' into 'main'.
+        commit-message: "Auto convert .md to .html" # The commit message for the changes made by the action.
+                                                    # The action will stage and commit all changes it detects.
+        add-paths: '*.html' # Specifies which files to add to the commit. Here, all .html files.
+        delete-branch: true # Optional: Deletes the 'html-converted' branch after the pull request is merged.
+                            # This keeps your repository clean.
+        do-not-create-if-no-changes: true # IMPORTANT: If there are no changes to the .html files
+                                          # compared to the 'main' branch, this will prevent the action
+                                          # from creating a PR and will exit successfully, avoiding the error.
