@@ -3,17 +3,14 @@ This repository focuses on statistical testing and data analysis for the CTB24-2
 
 ---
 
-## Independent T-test
+## Result Summary
 
+[Summary(html)](https://statistical-testing.m-buddies.org/Summary.html)
 
----
-
-## Paired T-test
-
-
+[Summary(markdown)](https://statistical-testing.m-buddies.org/Summary.md)
 
 ---
 
 ## One-Way ANOVA
 
-[ANOVA.html](https://statistical-testing.m-buddies.org/ANOVA.html)
+[ANOVA(html)](https://statistical-testing.m-buddies.org/ANOVA.html)
