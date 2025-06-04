@@ -5,12 +5,20 @@ This repository focuses on statistical testing and data analysis for the CTB24-2
 
 ## Result Summary
 
-[Summary(html)](https://statistical-testing.m-buddies.org/Summary.html)
+[Summary (HTML / .html)](https://statistical-testing.m-buddies.org/Summary.html)
 
-[Summary(markdown)](https://statistical-testing.m-buddies.org/Summary.md)
+[Summary (Markdown / .md)](https://statistical-testing.m-buddies.org/Summary.md)
 
 ---
 
 ## One-Way ANOVA
 
-[ANOVA(html)](https://statistical-testing.m-buddies.org/ANOVA.html)
+[ANOVA(HTML / .html)](https://statistical-testing.m-buddies.org/ANOVA.html)
+
+---
+
+&copy; [CTB24-25 Team 954746](https://github.com/CTB-Team954746)
+
+By a.ye & [Claude 4 Sonnet](https://claude.ai)
+
+Repository: https://github.com/CTB-Team954746/CTB24-25_Peer-Companionship-Program_Data-Analysis_Statistical-Testing
